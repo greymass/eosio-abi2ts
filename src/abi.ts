@@ -12,7 +12,7 @@ export interface Struct {
     base: string
     fields: Array<{
         name: string
-        type: string
+        type: string,
     }>
 }
 

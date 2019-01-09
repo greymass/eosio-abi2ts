@@ -62,9 +62,9 @@ group.addArgument(['-s', '--snake-case'], {
 })
 
 parser.addArgument(['output'], {
+    help: 'Output file to write to instead of stdout.',
     nargs: '?',
     type: String,
-    help: 'Output file to write to instead of stdout.',
 })
 
 const args = parser.parseArgs() as Arguments
