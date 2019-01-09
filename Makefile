@@ -9,8 +9,7 @@ all: lib
 
 .PHONY: test
 test: node_modules
-	tslint -p tsconfig.json -c tslint.json && \
-	./test/cli.sh
+	tslint -p tsconfig.json -c tslint.json
 
 .PHONY: lint
 lint: node_modules
