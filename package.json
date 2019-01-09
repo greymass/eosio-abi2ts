@@ -1,0 +1,36 @@
+{
+  "name": "eosio-abi2ts",
+  "version": "1.0.0",
+  "description": "generates typescript type defenitions from eosio abi files",
+  "author": "Johan Nordberg",
+  "license": "MIT",
+  "index": "lib/index.js",
+  "bin": {
+    "eosio-abi2ts": "lib/cli.js"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jnordberg/eosio-abi2ts"
+  },
+  "scripts": {
+    "prepublishOnly": "make test && make lib"
+  },
+  "keywords": [
+    "eosio",
+    "abi",
+    "typescript"
+  ],
+  "dependencies": {
+    "argparse": "^1.0.10"
+  },
+  "devDependencies": {
+    "@types/argparse": "^1.0.30",
+    "@types/node": "^10.12.18",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.12.0",
+    "typescript": "^3.2.2"
+  }
+}
