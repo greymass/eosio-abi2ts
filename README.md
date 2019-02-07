@@ -23,7 +23,7 @@ Usage
 
 ```
 $ eosio-abi2ts -h
-usage: eosio-abi2ts [-h] [-v] [-i INPUT] [-p PREFIX] [-n INDENT] [-t]
+usage: eosio-abi2ts [-h] [-v] [-i INPUT] [-p PREFIX] [-n INDENT] [-t] [-e]
                     [-a | -c | -s]
                     [output]
 
@@ -40,6 +40,7 @@ Optional arguments:
   -n INDENT, --indent INDENT
                         How many spaces or tabs to indend with.
   -t, --use-tabs        Use tabs instead of spaces for indentation.
+  -e, --export          Whether to export interfaces and types.
   -a, --pascal-case     Format types using PascalCase (default).
   -c, --camel-case      Format types using camelCase.
   -s, --snake-case      Format types using snake_case.
