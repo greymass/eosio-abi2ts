@@ -67,19 +67,26 @@ export default function transform(abi: Declaration, options: TransformOptions) {
 
     const resolveType = (type: string) => {
         const {name, optional} = resolveOptional(type)
-        switch (name) {
-            case 'string':
-                return 'string'
-            case 'bool':
-                return 'boolean'
-            default:
-                break
-        }
         const builtin = builtins.find((t) => t.name === name)
         if (builtin) {
             usedBuiltins.add(builtin)
         }
-        let rv = typeFormatter(name)
+        let rv: string
+        switch (name) {
+            case 'string':
+            case 'string[]':
+                rv = name
+                break
+            case 'bool':
+                rv = 'boolean'
+                break
+            case 'bool[]':
+                rv = 'boolean[]'
+                break
+            default:
+                rv = typeFormatter(name)
+                break
+        }
         if (optional) {
             rv += ' | undefined'
         }
