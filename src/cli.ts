@@ -16,6 +16,7 @@ interface Arguments {
     use_tabs: boolean
     output?: string
     export: boolean
+    namespace?: string
 }
 
 const parser = new ArgumentParser({version, addHelp: true})
@@ -46,6 +47,11 @@ parser.addArgument(['-e', '--export'], {
     action: 'storeTrue',
     defaultValue: false,
     help: 'Whether to export interfaces and types.',
+})
+
+parser.addArgument(['-N', '--namespace'], {
+    help: 'Namespace to wrap interfaces in (implies --export).',
+    type: String,
 })
 
 const group = parser.addMutuallyExclusiveGroup()
@@ -103,7 +109,12 @@ input.on('end', () => {
     try {
         const data = Buffer.concat(chunks)
         const abi = JSON.parse(data.toString('utf8'))
-        const lines = transform(abi, {indent, typeFormatter, export: args.export})
+        const lines = transform(abi, {
+            export: args.namespace ? true : args.export,
+            indent,
+            namespace: args.namespace,
+            typeFormatter,
+        })
         for (const line of lines) {
             output.write(line + '\n')
         }
