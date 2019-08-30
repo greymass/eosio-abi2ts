@@ -101,7 +101,7 @@ export default function transform(abi: Declaration, options: TransformOptions) {
 
     for (const variant of abi.variants || []) {
         const types = variant.types.map((t) => `['${ t }', ${ resolveType(t) }]`)
-        out.push(`type ${ typeFormatter(variant.name) } = ${ types.join(' | ') }`)
+        out.push(`${ exportPrefix }type ${ typeFormatter(variant.name) } = ${ types.join(' | ') }`)
     }
 
     for (const struct of abi.structs || []) {
